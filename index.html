@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELITE FITNESS - Cyber Kinetic OS</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Barlow Condensed & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Barlow Condensed"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            surface: {
+              DEFAULT: '#111417',
+              dim: '#0c0e12',
+              bright: '#1e2228',
+              card: '#161a20',
+              border: 'rgba(255, 255, 255, 0.08)',
+            },
+            neon: {
+              green: '#10f984',
+              cyan: '#00d2ff',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #07090b;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-hud {
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .neon-glow-green {
+      box-shadow: 0 0 20px rgba(16, 249, 132, 0.3);
+    }
+    .neon-text-glow {
+      text-shadow: 0 0 10px rgba(16, 249, 132, 0.6);
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .page-view {
+      display: none;
+    }
+    .page-view.active {
+      display: block;
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen text-slate-100 p-0 sm:p-4 bg-[#050709]">
+
+  <!-- Mobile Container Shell -->
+  <div class="w-full max-w-[430px] min-h-screen sm:min-h-[890px] bg-[#0c0e12] border border-white/10 sm:rounded-[40px] relative shadow-2xl flex flex-col overflow-hidden pb-24">
+
+    <!-- Top Persistent App Bar -->
+    <header class="sticky top-0 z-40 bg-[#0c0e12]/95 backdrop-blur-md px-5 pt-4 pb-3 border-b border-white/5 flex items-center justify-between">
+      <div class="flex items-center gap-2.5 cursor-pointer" onclick="navigateTo('home')">
+        <div class="w-8 h-8 rounded-lg bg-neon-green/10 border border-neon-green/30 flex items-center justify-center text-neon-green font-hud font-black text-lg">
+          EF
+        </div>
+        <div>
+          <span class="font-hud font-black text-xl tracking-wider text-white">ELITE FITNESS</span>
+          <span class="block text-[9px] font-hud text-neon-cyan tracking-widest leading-none">NODE // ABUZAR</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- Live Connection Ping -->
+        <div class="px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-hud text-neon-green font-bold flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-neon-green animate-ping"></span>
+          <span>ONLINE</span>
+        </div>
+
+        <!-- Profile Direct Button (Geometric Avatar, No Photos) -->
+        <button onclick="navigateTo('profile')" class="w-9 h-9 rounded-full bg-gradient-to-tr from-cyan-500/20 to-emerald-500/20 border border-neon-green/40 flex items-center justify-center text-neon-green font-hud font-bold text-xs hover:border-neon-green transition">
+          AB
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Sections Area -->
+    <main class="flex-1 px-5 pt-4 overflow-y-auto">
+
+      <!-- ================= 1. HOME DASHBOARD ================= -->
+      <section id="view-home" class="page-view active space-y-5">
+        <!-- Status HUD Indicator -->
+        <div class="flex items-center justify-between text-xs font-hud tracking-widest text-slate-400">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-neon-green"></span>
+            <span class="text-neon-green">SYSTEM OPTIMIZED • LEVEL 42 PRO</span>
+          </div>
+          <span class="text-slate-500">SYNCED 08:42</span>
+        </div>
+
+        <!-- Welcome Banner -->
+        <div class="p-4 rounded-3xl bg-gradient-to-br from-[#161d24] to-surface-card border border-white/10 space-y-2 relative overflow-hidden">
+          <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-neon-green/5 rounded-full blur-2xl"></div>
+          <p class="text-[11px] font-hud text-neon-cyan tracking-widest">NEURAL BIO-LINK ACTIVE</p>
+          <h1 class="text-2xl font-hud font-black text-white">
+            WELCOME BACK, <span class="text-neon-green">ABUZAR</span>
+          </h1>
+          <p class="text-xs text-slate-300 italic">"Discipline turns potential into biological power."</p>
+        </div>
+
+        <!-- Real-Time Biometrics -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between font-hud">
+            <span class="text-xs tracking-wider text-slate-400">DAILY BIOMETRICS</span>
+            <span class="text-xs text-neon-cyan font-bold">86% COMPLETE</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="p-3.5 rounded-2xl bg-surface-card border border-white/5 space-y-1">
+              <span class="text-[10px] font-hud text-slate-400 flex items-center gap-1">
+                <i class="ph-fill ph-fire text-neon-green"></i> ACTIVE BURN
+              </span>
+              <p class="text-2xl font-hud font-black text-white" id="home-calories">1,840</p>
+              <p class="text-[10px] font-hud text-slate-400">TARGET: 2,400 KCAL</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-surface-card border border-white/5 space-y-1">
+              <span class="text-[10px] font-hud text-slate-400 flex items-center gap-1">
+                <i class="ph-fill ph-footprints text-neon-cyan"></i> KINETIC STEPS
+              </span>
+              <p class="text-2xl font-hud font-black text-white">12,480</p>
+              <p class="text-[10px] font-hud text-slate-400">TARGET: 15,000</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Routine Card -->
+        <div class="p-4 rounded-3xl bg-surface-card border border-neon-green/30 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-hud px-2 py-0.5 rounded bg-emerald-500/10 text-neon-green border border-neon-green/20 font-bold">CURRENT PROTOCOL</span>
+            <span class="text-xs font-hud text-slate-400">SESSION #308</span>
+          </div>
+          <div>
+            <h3 class="text-lg font-hud font-extrabold text-white">HYPERTROPHY X-FORCE: CHEST & DELTS</h3>
+            <p class="text-xs text-slate-400 mt-0.5">4 of 6 exercises executed (68% completion)</p>
+          </div>
+          <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+            <div class="bg-neon-green h-full rounded-full" style="width: 68%"></div>
+          </div>
+          <button onclick="navigateTo('workouts')" class="w-full py-3 rounded-2xl bg-neon-green text-black font-hud font-black text-sm flex items-center justify-center gap-2 hover:opacity-90 transition">
+            <i class="ph-fill ph-play"></i> LAUNCH WORKOUT ROUTINES
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= 2. WORKOUT PLANS ================= -->
+      <section id="view-workouts" class="page-view space-y-4">
+        <div>
+          <h2 class="text-2xl font-hud font-black text-white">TRAINING PROTOCOLS</h2>
+          <p class="text-xs text-slate-400">Algorithmic periodization programs tailored to your profile.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex gap-2 font-hud text-xs">
+          <button onclick="filterWorkouts('all')" class="plan-filter-btn flex-1 py-2 rounded-xl bg-neon-green text-black font-bold" data-tier="all">ALL</button>
+          <button onclick="filterWorkouts('beginner')" class="plan-filter-btn flex-1 py-2 rounded-xl bg-surface-card border border-white/5 text-slate-400" data-tier="beginner">BEGINNER</button>
+          <button onclick="filterWorkouts('advanced')" class="plan-filter-btn flex-1 py-2 rounded-xl bg-surface-card border border-white/5 text-slate-400" data-tier="advanced">ADVANCED</button>
+        </div>
+
+        <!-- Workout Plan Cards -->
+        <div class="space-y-3" id="workout-list">
+          <div class="workout-card p-4 rounded-3xl bg-surface-card border border-white/10 space-y-2" data-tier="advanced">
+            <div class="flex items-center justify-between text-xs font-hud">
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-neon-green border border-neon-green/30 font-bold">ADVANCED • 8 WEEKS</span>
+              <span class="text-neon-cyan">5 DAYS / WK</span>
+            </div>
+            <h3 class="text-lg font-hud font-bold text-white">TITAN HYPERTROPHY PROTOCOL</h3>
+            <p class="text-xs text-slate-400">Maximum mechanical tension overload engineered for rapid myofibrillar density.</p>
+            <div class="flex items-center justify-between pt-2 border-t border-white/5 text-xs font-hud text-slate-400">
+              <span>65 MIN / DAY</span>
+              <button onclick="startSession('Titan Hypertrophy')" class="px-3 py-1.5 rounded-xl bg-neon-green/10 text-neon-green border border-neon-green/30 font-bold hover:bg-neon-green hover:text-black transition">ENROLL PROTOCOL</button>
+            </div>
+          </div>
+
+          <div class="workout-card p-4 rounded-3xl bg-surface-card border border-white/10 space-y-2" data-tier="beginner">
+            <div class="flex items-center justify-between text-xs font-hud">
+              <span class="px-2 py-0.5 rounded bg-cyan-500/10 text-neon-cyan border border-cyan-500/30 font-bold">BEGINNER • 4 WEEKS</span>
+              <span class="text-slate-400">3 DAYS / WK</span>
+            </div>
+            <h3 class="text-lg font-hud font-bold text-white">NEURO-STRENGTH ZERO RESISTANCE</h3>
+            <p class="text-xs text-slate-400">Kinetic tendon conditioning and foundational barbell activation.</p>
+            <div class="flex items-center justify-between pt-2 border-t border-white/5 text-xs font-hud text-slate-400">
+              <span>40 MIN / DAY</span>
+              <button onclick="startSession('Neuro-Strength Zero')" class="px-3 py-1.5 rounded-xl bg-neon-green/10 text-neon-green border border-neon-green/30 font-bold hover:bg-neon-green hover:text-black transition">ENROLL PROTOCOL</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 3. EXERCISE LIBRARY ================= -->
+      <section id="view-library" class="page-view space-y-4">
+        <div>
+          <h2 class="text-2xl font-hud font-black text-white">EXERCISE REGISTRY</h2>
+          <p class="text-xs text-slate-400">Biometric coaching cues, movement mechanics, and rest pacing.</p>
+        </div>
+
+        <!-- Interactive Rest Engine Widget -->
+        <div class="p-4 rounded-3xl bg-gradient-to-b from-[#182029] to-surface-card border border-neon-cyan/30 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-hud font-bold text-neon-cyan flex items-center gap-1.5">
+              <i class="ph ph-timer text-base"></i> INTERSET REST ENGINE
+            </span>
+            <span id="timer-status" class="text-[10px] font-hud px-2 py-0.5 rounded bg-white/10 text-slate-300">STANDBY</span>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-3xl font-hud font-black text-white" id="timer-display">01:30</p>
+              <p class="text-[10px] font-hud text-slate-400">TARGET INTERVAL CADENCE</p>
+            </div>
+            <div class="flex gap-2">
+              <button id="btn-timer-toggle" onclick="toggleTimer()" class="w-12 h-12 rounded-2xl bg-neon-green text-black flex items-center justify-center hover:opacity-90 transition font-bold text-xl">
+                <i class="ph-fill ph-play" id="timer-icon"></i>
+              </button>
+              <button onclick="resetTimer()" class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-slate-300 flex items-center justify-center hover:text-white transition">
+                <i class="ph ph-arrow-counter-clockwise text-lg"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Preset Pills -->
+          <div class="flex gap-2 pt-1 font-hud text-xs">
+            <button onclick="setTimerDuration(45)" class="flex-1 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan transition text-slate-300">45s</button>
+            <button onclick="setTimerDuration(60)" class="flex-1 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan transition text-slate-300">60s</button>
+            <button onclick="setTimerDuration(90)" class="flex-1 py-1.5 rounded-xl bg-neon-cyan/20 border border-neon-cyan text-neon-cyan font-bold">90s</button>
+            <button onclick="setTimerDuration(120)" class="flex-1 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan transition text-slate-300">120s</button>
+          </div>
+        </div>
+
+        <!-- Exercises List -->
+        <div class="space-y-3">
+          <div class="p-4 rounded-3xl bg-surface-card border border-white/5 space-y-2">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-hud px-2 py-0.5 rounded bg-emerald-500/10 text-neon-green border border-neon-green/20 font-bold">CHEST • BARBELL</span>
+                <h4 class="text-lg font-hud font-bold text-white mt-1">INCLINE BARBELL BENCH PRESS</h4>
+              </div>
+              <span class="text-xs font-hud font-black text-neon-cyan">RPE 8.5</span>
+            </div>
+            <p class="text-xs text-slate-400">Target: Upper Clavicular Head & Anterior Delts. 4 Sets × 8-10 Reps.</p>
+            <p class="text-[11px] text-slate-300 bg-white/5 p-2.5 rounded-xl border border-white/5 italic">
+              "Elite Cue: Drive shoulder blades retracted into pad; slow 3-second eccentric phase."
+            </p>
+          </div>
+
+          <div class="p-4 rounded-3xl bg-surface-card border border-white/5 space-y-2">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-hud px-2 py-0.5 rounded bg-cyan-500/10 text-neon-cyan border border-cyan-500/20 font-bold">POSTERIOR CHAIN</span>
+                <h4 class="text-lg font-hud font-bold text-white mt-1">CONVENTIONAL DEADLIFT</h4>
+              </div>
+              <span class="text-xs font-hud font-black text-neon-cyan">RPE 9.0</span>
+            </div>
+            <p class="text-xs text-slate-400">Target: Hamstrings, Gluteus & Erector Spinae. 5 Sets × 5 Reps.</p>
+            <p class="text-[11px] text-slate-300 bg-white/5 p-2.5 rounded-xl border border-white/5 italic">
+              "Elite Cue: Pull slack completely from the bar before breaking floor contact."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 4. DIET & NUTRITION ================= -->
+      <section id="view-nutrition" class="page-view space-y-4">
+        <div>
+          <h2 class="text-2xl font-hud font-black text-white">METABOLIC FUEL MATRIX</h2>
+          <p class="text-xs text-slate-400">Real-time macro partitioning and hydration telemetry.</p>
+        </div>
+
+        <!-- Energy Fuel Core -->
+        <div class="p-5 rounded-3xl bg-surface-card border border-white/5 text-center space-y-3">
+          <p class="text-[10px] font-hud text-slate-400 tracking-widest">ENERGY FUEL CORE</p>
+          <div>
+            <span class="text-4xl font-hud font-black text-white" id="macro-calories">2,350</span>
+            <span class="text-xs font-hud text-slate-400">/ 3,100 KCAL</span>
+          </div>
+          <p class="text-xs font-hud text-neon-green" id="macro-remaining">750 KCAL REMAINING</p>
+
+          <div class="grid grid-cols-3 gap-2 pt-2 border-t border-white/5 text-left font-hud">
+            <div class="p-2 rounded-xl bg-white/5">
+              <span class="text-[10px] text-neon-green">PROTEIN</span>
+              <p class="text-lg font-bold text-white"><span id="macro-p">185</span>g</p>
+              <span class="text-[9px] text-slate-500">GOAL 220g</span>
+            </div>
+            <div class="p-2 rounded-xl bg-white/5">
+              <span class="text-[10px] text-neon-cyan">CARBS</span>
+              <p class="text-lg font-bold text-white"><span id="macro-c">260</span>g</p>
+              <span class="text-[9px] text-slate-500">GOAL 330g</span>
+            </div>
+            <div class="p-2 rounded-xl bg-white/5">
+              <span class="text-[10px] text-amber-400">FATS</span>
+              <p class="text-lg font-bold text-white"><span id="macro-f">62</span>g</p>
+              <span class="text-[9px] text-slate-500">GOAL 80g</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hydration Matrix -->
+        <div class="p-4 rounded-3xl bg-surface-card border border-white/5 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5 text-xs font-hud font-bold text-neon-cyan">
+              <i class="ph-fill ph-drop text-base"></i> HYDRATION MATRIX
+            </div>
+            <span class="text-xs font-hud text-slate-400" id="water-progress-text">2.8L / 3.8L TARGET</span>
+          </div>
+
+          <div class="w-full bg-white/10 h-2.5 rounded-full overflow-hidden">
+            <div class="bg-neon-cyan h-full rounded-full transition-all duration-300" id="water-progress-bar" style="width: 74%"></div>
+          </div>
+
+          <div class="flex gap-2">
+            <button onclick="logWater(0.25)" class="flex-1 py-2.5 rounded-2xl bg-cyan-500/10 text-neon-cyan border border-cyan-500/20 font-hud font-bold text-xs hover:bg-cyan-500/20 transition">
+              + 250 ML
+            </button>
+            <button onclick="logWater(0.50)" class="flex-1 py-2.5 rounded-2xl bg-cyan-500/10 text-neon-cyan border border-cyan-500/20 font-hud font-bold text-xs hover:bg-cyan-500/20 transition">
+              + 500 ML
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Log Meal CTA -->
+        <button onclick="logCustomMeal()" class="w-full py-3.5 rounded-2xl bg-neon-green text-black font-hud font-black text-sm flex items-center justify-center gap-2 hover:opacity-90 transition">
+          <i class="ph ph-plus-circle text-lg"></i> QUICK LOG MEAL PROTOCOL
+        </button>
+      </section>
+
+      <!-- ================= 5. PROGRESS TRACKER ================= -->
+      <section id="view-progress" class="page-view space-y-4">
+        <div>
+          <h2 class="text-2xl font-hud font-black text-white">BIOMETRIC ANALYTICS</h2>
+          <p class="text-xs text-slate-400">Longitudinal trajectory of body mass, strength, and adherence.</p>
+        </div>
+
+        <!-- Body Mass Trajectory Card -->
+        <div class="p-4 rounded-3xl bg-surface-card border border-white/5 space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-[10px] font-hud text-slate-400">CURRENT BODY MASS</p>
+              <h3 class="text-3xl font-hud font-black text-white">84.6 <span class="text-xs text-slate-400">KG</span></h3>
+            </div>
+            <div class="text-right">
+              <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-neon-green text-xs font-hud font-bold">-2.4 KG THIS MONTH</span>
+              <p class="text-[10px] font-hud text-slate-400 mt-1">TARGET: 83.0 KG</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 pt-2 border-t border-white/5 text-xs font-hud">
+            <div class="p-2.5 rounded-2xl bg-white/5">
+              <span class="text-slate-400">BODY FAT</span>
+              <p class="text-lg font-bold text-neon-cyan">11.8%</p>
+              <span class="text-[10px] text-neon-green">↓ Down from 13.5%</span>
+            </div>
+            <div class="p-2.5 rounded-2xl bg-white/5">
+              <span class="text-slate-400">SKELETAL MUSCLE</span>
+              <p class="text-lg font-bold text-neon-green">41.2 KG</p>
+              <span class="text-[10px] text-neon-green">↑ +0.8 kg gain</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PR Hall of Fame -->
+        <div class="p-4 rounded-3xl bg-surface-card border border-white/5 space-y-3">
+          <div class="flex items-center justify-between font-hud">
+            <span class="text-xs text-slate-400">PR HALL OF FAME</span>
+            <span class="text-[10px] text-neon-green">1RM VERIFIED</span>
+          </div>
+
+          <div class="space-y-2 font-hud">
+            <div class="p-3 rounded-2xl bg-white/5 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-bold text-white">BARBELL BACK SQUAT</p>
+                <p class="text-[10px] text-slate-500">Verified 3 days ago</p>
+              </div>
+              <span class="text-lg font-black text-neon-green">190 KG</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/5 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-bold text-white">CONVENTIONAL DEADLIFT</p>
+                <p class="text-[10px] text-slate-500">Quarterly max verified</p>
+              </div>
+              <span class="text-lg font-black text-neon-green">240 KG</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/5 flex items-center justify-between">
+              <div>
+                <p class="text-sm font-bold text-white">BARBELL BENCH PRESS</p>
+                <p class="text-[10px] text-slate-500">Solid lock tested</p>
+              </div>
+              <span class="text-lg font-black text-neon-green">145 KG</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 6. MEMBERSHIP ================= -->
+      <section id="view-membership" class="page-view space-y-4">
+        <div>
+          <h2 class="text-2xl font-hud font-black text-white">ACCESS TIERS</h2>
+          <p class="text-xs text-slate-400">Bespoke athletic privileges engineered with continuous feedback.</p>
+        </div>
+
+        <div class="p-4 rounded-3xl bg-gradient-to-b from-[#18231c] to-surface-card border border-neon-green/40 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-hud font-bold bg-neon-green/20 text-neon-green">ACTIVE PLAN</span>
+            <span class="text-2xl font-hud font-black text-neon-green">$149 <span class="text-xs text-slate-400 font-normal">/MO</span></span>
+          </div>
+          <h3 class="text-xl font-hud font-bold text-white">BLACK CYBER TIER</h3>
+          <ul class="text-xs text-slate-300 space-y-2">
+            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-neon-green"></i> 24/7 Biometric Gym & Altitude Zone Access</li>
+            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-neon-green"></i> Autonomous AI Workout Optimization</li>
+            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-neon-green"></i> Weekly 1-on-1 Master Trainer Consultation</li>
+          </ul>
+          <button class="w-full py-3 rounded-2xl bg-white/10 border border-white/20 text-white font-hud font-bold text-xs">MANAGE BILLING & CONTRACT</button>
+        </div>
+      </section>
+
+      <!-- ================= 7. PROFILE & SETTINGS ================= -->
+      <section id="view-profile" class="page-view space-y-4">
+        <!-- Athlete Identity Card -->
+        <div class="p-5 rounded-3xl bg-surface-card border border-white/10 text-center space-y-3">
+          <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-cyan-500/30 to-emerald-500/30 border-2 border-neon-green flex items-center justify-center text-neon-green font-hud font-black text-2xl shadow-[0_0_15px_#10f984]">
+            AB
+          </div>
+          <div>
+            <h3 class="text-xl font-hud font-black text-white">ABUZAR</h3>
+            <p class="text-xs text-slate-400 font-hud">@abuzaryousuf • #ABZ-08680</p>
+          </div>
+
+          <div class="flex flex-col gap-1.5 pt-2 text-xs font-hud">
+            <div class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between text-slate-300">
+              <span class="text-slate-500 flex items-center gap-1.5"><i class="ph ph-envelope"></i> EMAIL</span>
+              <span class="text-neon-cyan">abuzaryousuf7@gmail.com</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white/5 flex items-center justify-between text-slate-300">
+              <span class="text-slate-500 flex items-center gap-1.5"><i class="ph ph-phone"></i> MOBILE</span>
+              <span class="text-neon-green">+91 6005808680</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sync Toggles -->
+        <div class="p-4 rounded-3xl bg-surface-card border border-white/5 space-y-3 font-hud">
+          <span class="text-xs text-slate-400">TELEMETRY PREFERENCES</span>
+          <div class="flex items-center justify-between py-1">
+            <span class="text-xs text-white">Haptic Feedback on Reps</span>
+            <input type="checkbox" checked class="w-4 h-4 accent-emerald-400" />
+          </div>
+          <div class="flex items-center justify-between py-1 border-t border-white/5">
+            <span class="text-xs text-white">Audio Coaching & Rest Beeps</span>
+            <input type="checkbox" checked class="w-4 h-4 accent-emerald-400" />
+          </div>
+        </div>
+
+        <button onclick="navigateTo('home')" class="w-full py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-300 font-hud font-bold text-xs hover:text-white transition">
+          RETURN TO HOME
+        </button>
+      </section>
+
+    </main>
+
+    <!-- Bottom Fixed Cyber Tab Navigation Bar -->
+    <nav class="absolute bottom-0 left-0 right-0 h-20 bg-[#0c0e12]/95 backdrop-blur-lg border-t border-white/10 px-3 flex items-center justify-around z-50">
+      <button onclick="navigateTo('home')" id="tab-home" class="nav-tab flex flex-col items-center gap-1 text-neon-green">
+        <i class="ph-fill ph-squares-four text-xl"></i>
+        <span class="text-[10px] font-hud font-bold">HOME</span>
+      </button>
+
+      <button onclick="navigateTo('workouts')" id="tab-workouts" class="nav-tab flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+        <i class="ph ph-barbell text-xl"></i>
+        <span class="text-[10px] font-hud">WORKOUTS</span>
+      </button>
+
+      <button onclick="navigateTo('library')" id="tab-library" class="nav-tab flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+        <i class="ph ph-books text-xl"></i>
+        <span class="text-[10px] font-hud">LIBRARY</span>
+      </button>
+
+      <button onclick="navigateTo('nutrition')" id="tab-nutrition" class="nav-tab flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+        <i class="ph ph-fork-knife text-xl"></i>
+        <span class="text-[10px] font-hud">NUTRITION</span>
+      </button>
+
+      <button onclick="navigateTo('progress')" id="tab-progress" class="nav-tab flex flex-col items-center gap-1 text-slate-400 hover:text-white transition">
+        <i class="ph ph-chart-line-up text-xl"></i>
+        <span class="text-[10px] font-hud">PROGRESS</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- Vanilla JavaScript Logic -->
+  <script>
+    // 1. Live SPA Navigation Router
+    function navigateTo(pageId) {
+      // Hide all page views
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.remove('active');
+      });
+      // Show selected page
+      const target = document.getElementById('view-' + pageId);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      // Update Nav Tab highlights
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.remove('text-neon-green');
+        tab.classList.add('text-slate-400');
+        const icon = tab.querySelector('i');
+        if (icon) icon.className = icon.className.replace('ph-fill', 'ph');
+      });
+
+      const activeTab = document.getElementById('tab-' + pageId);
+      if (activeTab) {
+        activeTab.classList.remove('text-slate-400');
+        activeTab.classList.add('text-neon-green');
+        const icon = activeTab.querySelector('i');
+        if (icon) icon.className = icon.className.replace('ph ', 'ph-fill ');
+      }
+
+      // Scroll to top of view
+      document.querySelector('main').scrollTop = 0;
+    }
+
+    // 2. Workout Plan Filter
+    function filterWorkouts(tier) {
+      document.querySelectorAll('.plan-filter-btn').forEach(btn => {
+        if (btn.dataset.tier === tier) {
+          btn.className = 'plan-filter-btn flex-1 py-2 rounded-xl bg-neon-green text-black font-bold';
+        } else {
+          btn.className = 'plan-filter-btn flex-1 py-2 rounded-xl bg-surface-card border border-white/5 text-slate-400';
+        }
+      });
+
+      document.querySelectorAll('.workout-card').forEach(card => {
+        if (tier === 'all' || card.dataset.tier === tier) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function startSession(name) {
+      alert(`Protocol "${name}" enrolled for Abuzar! Routine synced to telemetry HUD.`);
+    }
+
+    // 3. Interactive Interset Rest Timer Engine
+    let timerDuration = 90;
+    let timerRemaining = 90;
+    let timerInterval = null;
+    let isTimerRunning = false;
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    function updateTimerUI() {
+      document.getElementById('timer-display').innerText = formatTime(timerRemaining);
+    }
+
+    function toggleTimer() {
+      if (isTimerRunning) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        document.getElementById('timer-icon').className = 'ph-fill ph-play';
+        document.getElementById('timer-status').innerText = 'PAUSED';
+      } else {
+        isTimerRunning = true;
+        document.getElementById('timer-icon').className = 'ph-fill ph-pause';
+        document.getElementById('timer-status').innerText = 'COUNTING';
+        timerInterval = setInterval(() => {
+          if (timerRemaining > 0) {
+            timerRemaining--;
+            updateTimerUI();
+          } else {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            document.getElementById('timer-icon').className = 'ph-fill ph-play';
+            document.getElementById('timer-status').innerText = 'COMPLETE';
+            alert('Rest interval finished! Return to set.');
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      isTimerRunning = false;
+      timerRemaining = timerDuration;
+      updateTimerUI();
+      document.getElementById('timer-icon').className = 'ph-fill ph-play';
+      document.getElementById('timer-status').innerText = 'STANDBY';
+    }
+
+    function setTimerDuration(seconds) {
+      timerDuration = seconds;
+      resetTimer();
+    }
+
+    // 4. Hydration Matrix Logger
+    let currentWater = 2.8;
+    const targetWater = 3.8;
+
+    function logWater(liters) {
+      currentWater = Math.min(targetWater, +(currentWater + liters).toFixed(2));
+      const percentage = Math.min(100, Math.round((currentWater / targetWater) * 100));
+      document.getElementById('water-progress-text').innerText = `${currentWater}L / ${targetWater}L TARGET`;
+      document.getElementById('water-progress-bar').style.width = `${percentage}%`;
+    }
+
+    // 5. Macro Logger
+    let currentCalories = 2350;
+    let currentProtein = 185;
+    function logCustomMeal() {
+      currentCalories += 280;
+      currentProtein += 25;
+      document.getElementById('macro-calories').innerText = currentCalories.toLocaleString();
+      document.getElementById('macro-p').innerText = currentProtein;
+      const remaining = Math.max(0, 3100 - currentCalories);
+      document.getElementById('macro-remaining').innerText = `${remaining} KCAL REMAINING`;
+      document.getElementById('home-calories').innerText = currentCalories.toLocaleString();
+      alert(`Logged: +280 kcal and +25g Protein. Recalibrating daily metrics.`);
+    }
+  </script>
+</body>
+</html>
